@@ -464,13 +464,14 @@ script = ExtResource("1_eq4w1")
 
 [node name="animaciones" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_0ufem")
-animation = &"appear"
+animation = &"idle"
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 visible = false
 polygon = PackedVector2Array(-6, 16, -4, 16, -2, 14, -2, 13, 3, 13, 4, 13, 4, 16, 6, 16, 8, 14, 8, 11, 10, 11, 10, 8, 8, 6, 11, 4, 11, -2, 10, -3, 10, -6, 9, -7, 9, -9, 4, -9, 3, -8, 2, -8, 1, -9, -5, -9, -6, -7, -8, -9, -11, -9, -11, -7, -11, -1, -10, -1, -10, 3, -7, 6, -9, 8, -9, 11, -7, 11, -7, 14)
 
 [node name="Camera2D" type="Camera2D" parent="."]
+limit_bottom = 648
 editor_draw_limits = true
 editor_draw_drag_margin = true
 

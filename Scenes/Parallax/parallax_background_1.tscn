@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://ddvpkgse54djp"]
+
+[ext_resource type="Texture2D" uid="uid://bo2ln5tbx1o43" path="res://Assets/ParallaxBackground/Sky.png" id="1_4tnxl"]
+
+[node name="Parallax2D" type="Parallax2D"]
+
+[node name="Sky" type="Sprite2D" parent="."]
+position = Vector2(576, 324)
+scale = Vector2(3, 4)
+texture = ExtResource("1_4tnxl")

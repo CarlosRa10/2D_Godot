@@ -1,10 +1,22 @@
-[gd_scene load_steps=2 format=3 uid="uid://ddvpkgse54djp"]
+[gd_scene load_steps=3 format=3 uid="uid://ddvpkgse54djp"]
 
 [ext_resource type="Texture2D" uid="uid://bo2ln5tbx1o43" path="res://Assets/ParallaxBackground/Sky.png" id="1_4tnxl"]
+[ext_resource type="Texture2D" uid="uid://c4x166m1cv4k8" path="res://Assets/ParallaxBackground/MiddleLayer.png" id="2_k5r1w"]
 
 [node name="Parallax2D" type="Parallax2D"]
+repeat_size = Vector2(1152, 648)
 
 [node name="Sky" type="Sprite2D" parent="."]
+texture_repeat = 2
 position = Vector2(576, 324)
 scale = Vector2(3, 4)
 texture = ExtResource("1_4tnxl")
+
+[node name="Parallax2D" type="Parallax2D" parent="."]
+repeat_size = Vector2(1152, 648)
+
+[node name="MiddleLayer" type="Sprite2D" parent="Parallax2D"]
+texture_repeat = 2
+position = Vector2(576.75, 324)
+scale = Vector2(3.0013, 4)
+texture = ExtResource("2_k5r1w")

@@ -1,9 +1,9 @@
 [gd_scene load_steps=7 format=4 uid="uid://c8sdv3uh1r8ef"]
 
+[ext_resource type="PackedScene" uid="uid://4htf850eqrwj" path="res://Scenes/Parallax/parallax_background.tscn" id="1_4vt5a"]
 [ext_resource type="PackedScene" uid="uid://dk5yanqj5s3fw" path="res://Scenes/Characters/ninja_frog.tscn" id="1_bmkl0"]
 [ext_resource type="PackedScene" uid="uid://dpmgbm4a6l3je" path="res://Scenes/Escenarios/escenario_1.tscn" id="2_phpth"]
 [ext_resource type="Texture2D" uid="uid://cnl6kcxpbwwuv" path="res://Assets/Terrain/Terrain (16x16).png" id="3_0fryp"]
-[ext_resource type="PackedScene" uid="uid://ddvpkgse54djp" path="res://Scenes/Parallax/parallax_background_1.tscn" id="4_biw3c"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mksnm"]
 texture = ExtResource("3_0fryp")
@@ -157,7 +157,7 @@ sources/0 = SubResource("TileSetAtlasSource_mksnm")
 
 [node name="Node2D" type="Node2D"]
 
-[node name="Parallax2D" parent="." instance=ExtResource("4_biw3c")]
+[node name="ParallaxBackground" parent="." instance=ExtResource("1_4vt5a")]
 
 [node name="TileMapLayer2" type="TileMapLayer" parent="."]
 visible = false
@@ -169,3 +169,4 @@ tile_set = SubResource("TileSet_057ct")
 position = Vector2(0, -56)
 
 [node name="ninja_frog" parent="." instance=ExtResource("1_bmkl0")]
+position = Vector2(160, 384)

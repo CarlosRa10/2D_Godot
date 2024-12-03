@@ -166,7 +166,7 @@ tile_map_data = PackedByteArray("AAABABEAAAAVAAUAAAABABIAAAAVAAQAAAACABEAAAAUAAU
 tile_set = SubResource("TileSet_057ct")
 
 [node name="TileMapLayer" parent="." instance=ExtResource("2_phpth")]
-position = Vector2(0, -56)
 
 [node name="ninja_frog" parent="." instance=ExtResource("1_bmkl0")]
-position = Vector2(160, 384)
+position = Vector2(1791, 663)
+scale = Vector2(2, 2)

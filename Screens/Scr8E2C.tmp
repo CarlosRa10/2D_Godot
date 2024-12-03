@@ -167,6 +167,6 @@ tile_set = SubResource("TileSet_057ct")
 
 [node name="TileMapLayer" parent="." instance=ExtResource("2_phpth")]
 
-[node name="ninja_frog" parent="." groups=["wall_jump"] instance=ExtResource("1_bmkl0")]
+[node name="ninja_frog" parent="." instance=ExtResource("1_bmkl0")]
 position = Vector2(1791, 663)
 scale = Vector2(2, 2)

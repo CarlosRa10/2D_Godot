@@ -3,6 +3,7 @@ extends CharacterBody2D
 
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
+var direction
 var allow_animation:bool = false
 var leaved_floor:bool = false
 var had_jump:bool = false
@@ -10,6 +11,7 @@ var max_jumps:int = 2
 var count_jumps:int = 0
 var double_jump:bool = false
 var ray_cast_dimesion = 10.5
+var stuck_on_wall:bool = false
 
 func _ready():
 	$animaciones.play("appear")
@@ -40,55 +42,70 @@ func _physics_process(delta):
 
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
-	var direction = Input.get_axis("ui_left", "ui_right")
+	direction = Input.get_axis("ui_left", "ui_right")
 	if direction:
 		velocity.x = direction * SPEED
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 	#print(velocity)
+	if $rayCast_wallJump.get_collider():#verifica si get_collider() devuelve un objeto que no es nulo
+		if $rayCast_wallJump.get_collider().is_in_group("wall_jump"):
+			#print("Tocando la zona amarilla")
+			if velocity.y > 0:
+				count_jumps = 0
+				velocity.y = 0
+				stuck_on_wall = true
+		else:
+			stuck_on_wall = false
+	else:stuck_on_wall = false#si no hay colision wall jump false
 	move_and_slide()
 	decide_animation()
 	#print($rayCast_wallJump.is_colliding())
-	print($rayCast_wallJump.get_collider())
-	
+	#print($rayCast_wallJump.get_collider())
+
 
 func decide_animation():
+	if direction < 0:
+		$animaciones.flip_h = true
+		$rayCast_wallJump.target_position.x = -ray_cast_dimesion
+	elif direction > 0:
+		$animaciones.flip_h = false
+		$rayCast_wallJump.target_position.x = ray_cast_dimesion
+		
 	if double_jump:
 		double_jump = false
 		allow_animation = false
-		#$animaciones.flip_h = velocity.x < 0 #hace que cuando caiga quede mirando a la derecha
 		$animaciones.play("double_jump")
 			
 	if not allow_animation: return #Si es falso, la función termina y no se ejecuta el resto del código dentro de esa función.
 	# EJE DE LAS X
-	if velocity.x == 0:
-		#idle
-		$animaciones.play("idle")
-	elif velocity.x < 0:
-		#izquierda
-		$rayCast_wallJump.target_position.x = -ray_cast_dimesion
-		$animaciones.flip_h = true
-		$animaciones.play("run")
-	elif velocity.x > 0:
-		#derecha
-		$rayCast_wallJump.target_position.x = ray_cast_dimesion
-		$animaciones.flip_h = false
-		$animaciones.play("run")
-	
-	# EJE DE LAS Y
-	if velocity.y > 0:
-		#Caer
-		$animaciones.play("jump_down")
-	elif velocity.y < 0:
-		#Saltar
-		$animaciones.play("jump_up")
+	if stuck_on_wall:
+		$animaciones.play("wall_jump")
+	else:
+		if velocity.x == 0:
+			#idle
+			$animaciones.play("idle")
+		elif velocity.x < 0:
+			#izquierda
+			$animaciones.play("run")
+		elif velocity.x > 0:
+			#derecha
+			$animaciones.play("run")
 		
+		# EJE DE LAS Y
+		if velocity.y > 0:
+			#Caer
+			$animaciones.play("jump_down")
+		elif velocity.y < 0:
+			#Saltar
+			$animaciones.play("jump_up")
+			
 func right_to_jump():
 	#la primera vez had_jump = false, así que se pasa al siguiente chequeo
 	if had_jump: 
 		if count_jumps < max_jumps: return true
 		else: return false
-	if is_on_floor():
+	if is_on_floor() || stuck_on_wall:
 		had_jump = true #modifica el estado de had_jump para decir que "se le permite saltar"
 		return true #retorna true para permitir saltar
 	elif not $coyote_timer.is_stopped():

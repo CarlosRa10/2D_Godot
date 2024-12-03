@@ -486,8 +486,8 @@ editor_draw_drag_margin = true
 wait_time = 0.1
 one_shot = true
 
-[node name="rayCast_wallJump" type="RayCast2D" parent="."]
-target_position = Vector2(-10.5, 0)
+[node name="rayCast_wallJump" type="RayCast2D" parent="." groups=["wall_jump"]]
+target_position = Vector2(10.5, 0)
 
 [connection signal="animation_finished" from="animaciones" to="." method="_on_animaciones_animation_finished"]
 [connection signal="timeout" from="coyote_timer" to="." method="_on_coyote_timer_timeout"]

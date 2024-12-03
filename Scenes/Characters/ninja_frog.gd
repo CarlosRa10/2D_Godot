@@ -3,9 +3,11 @@ extends CharacterBody2D
 
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
-var appeared:bool = false
+var allow_animation:bool = false
 var leaved_floor:bool = false
 var had_jump:bool = false
+var max_jumps:int = 2
+var count_jumps:int = 0
 
 func _ready():
 	$animaciones.play("appear")
@@ -17,6 +19,8 @@ func _physics_process(delta):
 		leaved_floor = false
 		#Ha Saltado
 		had_jump = false
+		#Cuando toca el contador count jams tiene que ser 0
+		count_jumps = 0
 	if not is_on_floor():
 		#Si no estoy tocando suelo
 		if not leaved_floor:
@@ -26,6 +30,10 @@ func _physics_process(delta):
 
 	# Handle jump.
 	if Input.is_action_just_pressed("ui_accept") and right_to_jump():
+		if count_jumps == 1:
+			allow_animation = false
+			$animaciones.play("double_jump")
+		count_jumps += 1
 		velocity.y = JUMP_VELOCITY
 
 	# Get the input direction and handle the movement/deceleration.
@@ -41,7 +49,7 @@ func _physics_process(delta):
 	
 
 func decide_animation():
-	if not appeared: return
+	if not allow_animation: return
 	# EJE DE LAS X
 	if velocity.x == 0:
 		#idle
@@ -65,7 +73,9 @@ func decide_animation():
 		
 func right_to_jump():
 	#la primera vez had_jump = false, así que se pasa al siguiente chequeo
-	if had_jump: return false
+	if had_jump: 
+		if count_jumps < max_jumps: return true
+		else: return false
 	if is_on_floor():
 		had_jump = true #modifica el estado de had_jump para decir que "se le permite saltar"
 		return true #retorna true para permitir saltar
@@ -77,9 +87,9 @@ func right_to_jump():
 #SEÑALES
 #########
 func _on_animaciones_animation_finished():
-	print($animaciones.animation)
-	if $animaciones.animation == "appear":
-		appeared = true
+	#print($animaciones.animation)
+	#if $animaciones.animation == "appear":
+		allow_animation = true
 
 
 func _on_coyote_timer_timeout():

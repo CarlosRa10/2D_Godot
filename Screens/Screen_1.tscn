@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=4 uid="uid://c8sdv3uh1r8ef"]
+[gd_scene load_steps=12 format=4 uid="uid://c8sdv3uh1r8ef"]
 
 [ext_resource type="PackedScene" uid="uid://4htf850eqrwj" path="res://Scenes/Parallax/parallax_background.tscn" id="1_4vt5a"]
 [ext_resource type="PackedScene" uid="uid://dk5yanqj5s3fw" path="res://Scenes/Characters/ninja_frog.tscn" id="1_bmkl0"]
 [ext_resource type="PackedScene" uid="uid://dpmgbm4a6l3je" path="res://Scenes/Escenarios/escenario_1.tscn" id="2_phpth"]
 [ext_resource type="Texture2D" uid="uid://cnl6kcxpbwwuv" path="res://Assets/Terrain/Terrain (16x16).png" id="3_0fryp"]
+[ext_resource type="PackedScene" uid="uid://dt64g14k0tct5" path="res://Enviroment/movingPlatform_1.tscn" id="5_272yq"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mksnm"]
 texture = ExtResource("3_0fryp")
@@ -155,6 +156,50 @@ texture = ExtResource("3_0fryp")
 [sub_resource type="TileSet" id="TileSet_057ct"]
 sources/0 = SubResource("TileSetAtlasSource_mksnm")
 
+[sub_resource type="Curve2D" id="Curve2D_v10c0"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 1175, 477, 0, 0, 0, 0, 1659, 477, 0, 0, 0, 0, 1655, 729, 0, 0, 0, 0, 1174, 728)
+}
+point_count = 4
+
+[sub_resource type="Animation" id="Animation_g33cq"]
+resource_name = "regular_move"
+length = 3.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:progress_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5, 3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 1.0, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_jlnb7"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:progress_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_nmymj"]
+_data = {
+"RESET": SubResource("Animation_jlnb7"),
+"regular_move": SubResource("Animation_g33cq")
+}
+
 [node name="Node2D" type="Node2D"]
 
 [node name="ParallaxBackground" parent="." instance=ExtResource("1_4vt5a")]
@@ -168,5 +213,22 @@ tile_set = SubResource("TileSet_057ct")
 [node name="TileMapLayer" parent="." instance=ExtResource("2_phpth")]
 
 [node name="ninja_frog" parent="." groups=["wall_jump"] instance=ExtResource("1_bmkl0")]
-position = Vector2(1791, 663)
+position = Vector2(1835, 432)
 scale = Vector2(2, 2)
+
+[node name="Path2D" type="Path2D" parent="."]
+curve = SubResource("Curve2D_v10c0")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
+position = Vector2(1175, 477)
+rotates = false
+loop = false
+
+[node name="moving_platform_1" parent="Path2D/PathFollow2D" instance=ExtResource("5_272yq")]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Path2D/PathFollow2D"]
+libraries = {
+"": SubResource("AnimationLibrary_nmymj")
+}
+autoplay = "regular_move"
+speed_scale = 0.3

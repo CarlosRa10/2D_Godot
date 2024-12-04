@@ -467,6 +467,7 @@ animations = [{
 
 [node name="ninja_frog" type="CharacterBody2D"]
 scale = Vector2(3, 3)
+collision_layer = 16
 script = ExtResource("1_eq4w1")
 
 [node name="animaciones" type="AnimatedSprite2D" parent="."]

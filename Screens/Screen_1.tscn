@@ -1,10 +1,11 @@
-[gd_scene load_steps=12 format=4 uid="uid://c8sdv3uh1r8ef"]
+[gd_scene load_steps=13 format=4 uid="uid://c8sdv3uh1r8ef"]
 
 [ext_resource type="PackedScene" uid="uid://4htf850eqrwj" path="res://Scenes/Parallax/parallax_background.tscn" id="1_4vt5a"]
 [ext_resource type="PackedScene" uid="uid://dk5yanqj5s3fw" path="res://Scenes/Characters/ninja_frog.tscn" id="1_bmkl0"]
 [ext_resource type="PackedScene" uid="uid://dpmgbm4a6l3je" path="res://Scenes/Escenarios/escenario_1.tscn" id="2_phpth"]
 [ext_resource type="Texture2D" uid="uid://cnl6kcxpbwwuv" path="res://Assets/Terrain/Terrain (16x16).png" id="3_0fryp"]
 [ext_resource type="PackedScene" uid="uid://dt64g14k0tct5" path="res://Enviroment/movingPlatform_1.tscn" id="5_272yq"]
+[ext_resource type="PackedScene" uid="uid://7xvjrxfjo6rp" path="res://Scenes/Enemys/Saw.tscn" id="6_25mg5"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mksnm"]
 texture = ExtResource("3_0fryp")
@@ -162,6 +163,21 @@ _data = {
 }
 point_count = 4
 
+[sub_resource type="Animation" id="Animation_jlnb7"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:progress_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
 [sub_resource type="Animation" id="Animation_g33cq"]
 resource_name = "regular_move"
 length = 3.0
@@ -177,21 +193,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [0.0, 1.0, 0.0]
-}
-
-[sub_resource type="Animation" id="Animation_jlnb7"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:progress_ratio")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_nmymj"]
@@ -232,3 +233,6 @@ libraries = {
 }
 autoplay = "regular_move"
 speed_scale = 0.3
+
+[node name="saw" parent="." instance=ExtResource("6_25mg5")]
+position = Vector2(1929, 792)

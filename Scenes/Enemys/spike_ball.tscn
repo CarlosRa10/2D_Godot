@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://7otx5v5qfcmc"]
+
+[ext_resource type="Script" path="res://Scenes/Enemys/spike_ball.gd" id="1_wt5m6"]
+[ext_resource type="Texture2D" uid="uid://c81q63dv7d8fg" path="res://Assets/Traps/Spiked Ball/Chain.png" id="1_x0pxv"]
+[ext_resource type="Texture2D" uid="uid://ctbfe2i3tynyf" path="res://Assets/Traps/Spiked Ball/Spiked Ball.png" id="2_bk523"]
+
+[node name="SpikeBall" type="Node2D"]
+scale = Vector2(2, 2)
+script = ExtResource("1_wt5m6")
+
+[node name="Chain" type="Sprite2D" parent="."]
+texture = ExtResource("1_x0pxv")
+
+[node name="SpikedBall" type="Sprite2D" parent="."]
+position = Vector2(0, 15)
+texture = ExtResource("2_bk523")
+
+[node name="raycast_floor_detection" type="RayCast2D" parent="."]
+target_position = Vector2(0, 30)

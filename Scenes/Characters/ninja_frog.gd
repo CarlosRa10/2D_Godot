@@ -3,6 +3,7 @@ extends CharacterBody2D
 
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
+var health = 100
 var direction
 var allow_animation:bool = false
 var leaved_floor:bool = false
@@ -124,3 +125,9 @@ func _on_animaciones_animation_finished():
 func _on_coyote_timer_timeout():
 	
 	print("Booooom")
+
+
+func _on_damage_detection_area_shape_entered(area_rid: RID, area: Area2D, area_shape_index: int, local_shape_index: int) -> void:
+	health -= 20
+	print("Daño detectado")
+	print(health)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=4 uid="uid://c8sdv3uh1r8ef"]
+[gd_scene load_steps=15 format=4 uid="uid://c8sdv3uh1r8ef"]
 
 [ext_resource type="PackedScene" uid="uid://4htf850eqrwj" path="res://Scenes/Parallax/parallax_background.tscn" id="1_4vt5a"]
 [ext_resource type="PackedScene" uid="uid://dk5yanqj5s3fw" path="res://Scenes/Characters/ninja_frog.tscn" id="1_bmkl0"]
@@ -6,6 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://cnl6kcxpbwwuv" path="res://Assets/Terrain/Terrain (16x16).png" id="3_0fryp"]
 [ext_resource type="PackedScene" uid="uid://dt64g14k0tct5" path="res://Enviroment/movingPlatform_1.tscn" id="5_272yq"]
 [ext_resource type="PackedScene" uid="uid://7xvjrxfjo6rp" path="res://Scenes/Enemys/Saw.tscn" id="6_25mg5"]
+[ext_resource type="PackedScene" uid="uid://b5p82o6keemdv" path="res://Enviroment/trampoline.tscn" id="7_7r41c"]
+[ext_resource type="PackedScene" uid="uid://7otx5v5qfcmc" path="res://Scenes/Enemys/spike_ball.tscn" id="8_uwaml"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mksnm"]
 texture = ExtResource("3_0fryp")
@@ -214,7 +216,7 @@ tile_set = SubResource("TileSet_057ct")
 [node name="TileMapLayer" parent="." instance=ExtResource("2_phpth")]
 
 [node name="ninja_frog" parent="." groups=["wall_jump"] instance=ExtResource("1_bmkl0")]
-position = Vector2(1835, 432)
+position = Vector2(2535, 907)
 scale = Vector2(2, 2)
 
 [node name="Path2D" type="Path2D" parent="."]
@@ -236,3 +238,24 @@ speed_scale = 0.3
 
 [node name="saw" parent="." instance=ExtResource("6_25mg5")]
 position = Vector2(1929, 792)
+
+[node name="saw2" parent="." instance=ExtResource("6_25mg5")]
+position = Vector2(1798, 472)
+
+[node name="saw3" parent="." instance=ExtResource("6_25mg5")]
+position = Vector2(2267, 472)
+
+[node name="Trampoline" parent="." instance=ExtResource("7_7r41c")]
+position = Vector2(2449, 956)
+
+[node name="SpikeBall" parent="." instance=ExtResource("8_uwaml")]
+position = Vector2(2865, 824)
+
+[node name="SpikeBall2" parent="." instance=ExtResource("8_uwaml")]
+position = Vector2(2980, 760)
+
+[node name="SpikeBall3" parent="." instance=ExtResource("8_uwaml")]
+position = Vector2(3217, 822)
+
+[node name="SpikeBall4" parent="." instance=ExtResource("8_uwaml")]
+position = Vector2(3792, 844)

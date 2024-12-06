@@ -15,7 +15,7 @@ func _process(delta: float) -> void:
 			floorDetected = true
 			$raycast_floor_detection.target_position.y -= 6
 			init_spikeball()
-			#print("Suelo detectado ", $raycast_floor_detection.target_position.y	)
+			#print("Suelo detectado ", $raycast_floor_detection.target_position.y)
 
 func init_spikeball():
 	var numberOfChains = ($raycast_floor_detection.target_position.y - rayCastInitValue) / 6

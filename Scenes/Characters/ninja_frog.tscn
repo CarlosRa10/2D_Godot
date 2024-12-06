@@ -470,6 +470,7 @@ radius = 8.66667
 height = 22.6667
 
 [node name="ninja_frog" type="CharacterBody2D"]
+z_index = 2
 scale = Vector2(3, 3)
 collision_layer = 16
 script = ExtResource("1_eq4w1")

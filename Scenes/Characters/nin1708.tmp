@@ -588,7 +588,7 @@ script = ExtResource("1_eq4w1")
 
 [node name="animaciones" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_0ufem")
-animation = &"run"
+animation = &"prueba"
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 visible = false

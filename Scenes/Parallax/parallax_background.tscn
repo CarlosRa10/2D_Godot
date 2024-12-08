@@ -17,7 +17,7 @@ texture = ExtResource("1_3urxh")
 
 [node name="gris_claro" type="ParallaxLayer" parent="."]
 motion_scale = Vector2(0.8, 0.8)
-motion_mirroring = Vector2(1920, 0)
+motion_mirroring = Vector2(1920, 1080)
 
 [node name="gris_claro" type="Sprite2D" parent="gris_claro"]
 position = Vector2(960.5, 540.5)

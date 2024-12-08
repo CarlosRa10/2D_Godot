@@ -4,6 +4,7 @@ extends CharacterBody2D
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
 var health = 100
+var fruitCount = 0
 var direction
 var allow_animation:bool = false
 var leaved_floor:bool = false
@@ -112,6 +113,13 @@ func right_to_jump():
 	elif not $coyote_timer.is_stopped():
 		had_jump = true
 		return true
+		
+func collecteFruit(fruitType):
+	var auxString = fruitType + "Points"
+	var geinedPoints = GeneralRules[auxString]
+	fruitCount += geinedPoints
+	print(fruitCount)
+	#print(GeneralRules[auxString])
 		
 ##########
 #SEÑALES

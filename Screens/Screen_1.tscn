@@ -1,7 +1,8 @@
-[gd_scene load_steps=16 format=4 uid="uid://c8sdv3uh1r8ef"]
+[gd_scene load_steps=17 format=4 uid="uid://c8sdv3uh1r8ef"]
 
 [ext_resource type="PackedScene" uid="uid://4htf850eqrwj" path="res://Scenes/Parallax/parallax_background.tscn" id="1_4vt5a"]
 [ext_resource type="PackedScene" uid="uid://dk5yanqj5s3fw" path="res://Scenes/Characters/ninja_frog.tscn" id="1_bmkl0"]
+[ext_resource type="PackedScene" uid="uid://cf2ixc2ggxr75" path="res://Scenes/Parallax/parallax_background_prueba.tscn" id="2_1xo3p"]
 [ext_resource type="PackedScene" uid="uid://dpmgbm4a6l3je" path="res://Scenes/Escenarios/escenario_1.tscn" id="2_phpth"]
 [ext_resource type="Texture2D" uid="uid://cnl6kcxpbwwuv" path="res://Assets/Terrain/Terrain (16x16).png" id="3_0fryp"]
 [ext_resource type="PackedScene" uid="uid://dt64g14k0tct5" path="res://Enviroment/movingPlatform_1.tscn" id="5_272yq"]
@@ -207,6 +208,9 @@ _data = {
 [node name="Node2D" type="Node2D"]
 
 [node name="ParallaxBackground" parent="." instance=ExtResource("1_4vt5a")]
+visible = false
+
+[node name="ParallaxBackground-Prueba" parent="." instance=ExtResource("2_1xo3p")]
 
 [node name="TileMapLayer2" type="TileMapLayer" parent="."]
 visible = false
@@ -217,7 +221,7 @@ tile_set = SubResource("TileSet_057ct")
 [node name="TileMapLayer" parent="." instance=ExtResource("2_phpth")]
 
 [node name="ninja_frog" parent="." groups=["wall_jump"] instance=ExtResource("1_bmkl0")]
-position = Vector2(2535, 907)
+position = Vector2(182, 918)
 scale = Vector2(2, 2)
 
 [node name="Path2D" type="Path2D" parent="."]

@@ -1,0 +1,33 @@
+[gd_scene load_steps=4 format=3 uid="uid://cf2ixc2ggxr75"]
+
+[ext_resource type="Texture2D" uid="uid://dljh3j52ug3wc" path="res://Assets/ParallaxBackground/practica/BlueSkySkybox.png" id="1_omea3"]
+[ext_resource type="Texture2D" uid="uid://bau4pg8gvhimn" path="res://Assets/ParallaxBackground/practica/background2.png" id="2_mqbdh"]
+[ext_resource type="Texture2D" uid="uid://rd48i53eqg1d" path="res://Assets/ParallaxBackground/practica/background3.png" id="3_iblvr"]
+
+[node name="ParallaxBackground-Prueba" type="ParallaxBackground"]
+
+[node name="ParallaxLayer3" type="ParallaxLayer" parent="."]
+motion_scale = Vector2(0.1, 1)
+motion_mirroring = Vector2(1920, 1080)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxLayer3"]
+position = Vector2(960, 540)
+texture = ExtResource("1_omea3")
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="."]
+motion_scale = Vector2(0.5, 1)
+motion_mirroring = Vector2(1920, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxLayer2"]
+position = Vector2(960, 419.5)
+scale = Vector2(3, 2.06406)
+texture = ExtResource("2_mqbdh")
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="."]
+motion_scale = Vector2(0.7, 1)
+motion_mirroring = Vector2(1920, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxLayer"]
+position = Vector2(960, 539.5)
+scale = Vector2(3, 1.68906)
+texture = ExtResource("3_iblvr")

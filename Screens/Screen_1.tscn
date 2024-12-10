@@ -208,7 +208,7 @@ _data = {
 
 [node name="Node2D" type="Node2D"]
 
-[node name="CanvasLayer" parent="." instance=ExtResource("1_ak33k")]
+[node name="PlayerInfo" parent="." instance=ExtResource("1_ak33k")]
 
 [node name="ParallaxBackground" parent="." instance=ExtResource("1_4vt5a")]
 visible = false
@@ -224,7 +224,7 @@ tile_set = SubResource("TileSet_057ct")
 [node name="TileMapLayer" parent="." instance=ExtResource("2_phpth")]
 
 [node name="ninja_frog" parent="." groups=["wall_jump"] instance=ExtResource("1_bmkl0")]
-position = Vector2(182, 918)
+position = Vector2(2586, 898)
 scale = Vector2(2, 2)
 
 [node name="Path2D" type="Path2D" parent="."]

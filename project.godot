@@ -27,6 +27,8 @@ window/size/viewport_height=1080
 [global_group]
 
 wall_jump=""
+portal=""
+ninja=""
 
 [layer_names]
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=87 format=3 uid="uid://dk5yanqj5s3fw"]
+[gd_scene load_steps=88 format=3 uid="uid://dk5yanqj5s3fw"]
 
 [ext_resource type="Texture2D" uid="uid://dup88os21sh1b" path="res://Assets/Main Characters/Appearing (96x96).png" id="1_4s8kg"]
 [ext_resource type="Script" path="res://Scenes/Characters/ninja_frog.gd" id="1_eq4w1"]
@@ -580,7 +580,10 @@ animations = [{
 radius = 8.66667
 height = 22.6667
 
-[node name="ninja_frog" type="CharacterBody2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rrn0v"]
+size = Vector2(2.33333, 7)
+
+[node name="ninja_frog" type="CharacterBody2D" groups=["ninja"]]
 z_index = 2
 scale = Vector2(3, 3)
 collision_layer = 16
@@ -597,6 +600,8 @@ polygon = PackedVector2Array(-6, 15.6667, -4, 15.6667, -2, 14, -2, 13, 3, 13, 4,
 limit_bottom = 1080
 limit_smoothed = true
 position_smoothing_enabled = true
+drag_horizontal_enabled = true
+drag_vertical_enabled = true
 editor_draw_limits = true
 editor_draw_drag_margin = true
 
@@ -614,6 +619,13 @@ collision_mask = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="damage_detection"]
 position = Vector2(1, 4.66667)
 shape = SubResource("CapsuleShape2D_tlyms")
+
+[node name="area_for_portal" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="area_for_portal"]
+modulate = Color(0.290196, 0.25098, 1, 1)
+position = Vector2(0.666667, 6.66667)
+shape = SubResource("RectangleShape2D_rrn0v")
 
 [connection signal="animation_finished" from="animaciones" to="." method="_on_animaciones_animation_finished"]
 [connection signal="timeout" from="coyote_timer" to="." method="_on_coyote_timer_timeout"]

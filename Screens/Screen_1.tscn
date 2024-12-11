@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=4 uid="uid://c8sdv3uh1r8ef"]
+[gd_scene load_steps=19 format=4 uid="uid://c8sdv3uh1r8ef"]
 
 [ext_resource type="PackedScene" uid="uid://4htf850eqrwj" path="res://Scenes/Parallax/parallax_background.tscn" id="1_4vt5a"]
 [ext_resource type="PackedScene" path="res://Screens/PlayerInfo.tscn" id="1_afyg8"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://b5p82o6keemdv" path="res://Enviroment/trampoline.tscn" id="7_7r41c"]
 [ext_resource type="PackedScene" uid="uid://7otx5v5qfcmc" path="res://Scenes/Enemys/spike_ball.tscn" id="8_uwaml"]
 [ext_resource type="PackedScene" uid="uid://cw0u5dd8tuni5" path="res://Enviroment/fruit.tscn" id="9_eki1w"]
+[ext_resource type="PackedScene" uid="uid://bt6l34mt53xow" path="res://Enviroment/portal.tscn" id="12_cuyhy"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mksnm"]
 texture = ExtResource("3_0fryp")
@@ -274,3 +275,9 @@ position = Vector2(2478, 835)
 [node name="fruit2" parent="." instance=ExtResource("9_eki1w")]
 position = Vector2(2619, 836)
 fruitType = "cherry"
+
+[node name="portal" parent="." instance=ExtResource("12_cuyhy")]
+position = Vector2(4415, 952)
+
+[node name="portal2" parent="." instance=ExtResource("12_cuyhy")]
+position = Vector2(4322, 854)

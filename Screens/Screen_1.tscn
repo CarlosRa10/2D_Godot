@@ -1,6 +1,7 @@
-[gd_scene load_steps=17 format=4 uid="uid://c8sdv3uh1r8ef"]
+[gd_scene load_steps=18 format=4 uid="uid://c8sdv3uh1r8ef"]
 
 [ext_resource type="PackedScene" uid="uid://4htf850eqrwj" path="res://Scenes/Parallax/parallax_background.tscn" id="1_4vt5a"]
+[ext_resource type="PackedScene" path="res://Screens/PlayerInfo.tscn" id="1_afyg8"]
 [ext_resource type="PackedScene" uid="uid://dk5yanqj5s3fw" path="res://Scenes/Characters/ninja_frog.tscn" id="1_bmkl0"]
 [ext_resource type="PackedScene" uid="uid://cf2ixc2ggxr75" path="res://Scenes/Parallax/parallax_background_prueba.tscn" id="2_1xo3p"]
 [ext_resource type="PackedScene" uid="uid://dpmgbm4a6l3je" path="res://Scenes/Escenarios/escenario_1.tscn" id="2_phpth"]
@@ -206,6 +207,8 @@ _data = {
 }
 
 [node name="Node2D" type="Node2D"]
+
+[node name="PlayerInfo" parent="." instance=ExtResource("1_afyg8")]
 
 [node name="ParallaxBackground" parent="." instance=ExtResource("1_4vt5a")]
 visible = false

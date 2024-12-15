@@ -6,6 +6,7 @@ const JUMP_VELOCITY = -400.0
 var health = 100
 var fruitCount = 0
 var direction
+var block_ninja = false
 var allow_animation:bool = false
 var leaved_floor:bool = false
 var had_jump:bool = false
@@ -20,6 +21,7 @@ func _ready():
 	$rayCast_wallJump.target_position.x = ray_cast_dimesion
 
 func _physics_process(delta):
+	if block_ninja: return;
 	# Add the gravity.
 	if is_on_floor():
 		#dejado el suelo
